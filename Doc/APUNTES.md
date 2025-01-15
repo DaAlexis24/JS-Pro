@@ -2,6 +2,8 @@
 
 ## Miércoles 15/01/2025
 
+El objetivo de esta sesión es configurar un proyecto Fronted desde 0.
+
 Creación de un proyecto utilizando [Vite](https://es.vite.dev/guide/ "Vite Guide"), con la configuración _Vainilla_ y _Typescript_
 
 Es importante recordar, que el fichero "index.html" sí o sí tiene que estar en la raíz del proyecto, para que se el proyecto se pueda construir de la manera correcta, esto se puede modificar para que se pueda guardar en la carpeta **src** aunque no es lo más recomendable.
@@ -28,3 +30,49 @@ Ahora, al realizar el _build_ nos dará una carpeta oculta llamada **dist**, don
 ### Herramientas para MEJORAR tu código
 
 Linter, es una buena alternativa para que puedas seguir las reglas. En este caso nos descargamos ESLint.
+
+### Errores de TS
+
+Los errores de tipado de TS suelen ser algo que se toman muy enserio, pero suele pasar que, aunque haya una función mal escrita.
+
+### Testing
+
+Esto es un paso muy importante a la hora de desplegar tu proyecto. Existen muchísimas opciones, pero vamos a utilizar [Vitest](https://vitest.dev/ "Vitest"), ya que es el framework más moderno y rápido del mercado, quitando mercado a **_Jest_**
+
+#### ¿Qué es un test?
+
+Lo que uno más desea a la hora de desplegar un proyecto es que funcione con la menor cantidad de fallos posible (o ninguno si es que se puede), así que para realizar ello realizamos un "Test".
+
+En el siguiente ejemplo, veremos un caso de testing...
+
+```TS
+export const add = (a: number, b: number) => a + b;
+console.log(add(0, 1)); //1
+console.log(add(1, -2)); //-1
+console.log(add(1.5, 3.4)); //4.9
+```
+
+... manual :(
+
+El problema de esto, es que, si hablamos de un proyecto grande, tendríamos que enfocarnos en muchísimos tests y eso nos llevaría muchísimo tiempo, para ello existe **_Vitest_**
+
+#### ¿Que tenemos que configurar para poder utilizar Vitest?
+
+1. Lo instalamos dentro de nuestro proyecto utilizando el comando: `npm install -D vitest`
+2. Nos dirigimos al fichero [package.json](/package.json "Package JSON") y ubicamos el apartado de `"scripts"`, acá añadimos la siguiente línea de código: `"test": "vitest"`
+3. Creamos el archivo **_vite.config.ts_** en la raíz del proyecto, y lo codificamos de la siguiente manera:
+
+   ```TS
+    import { defineConfig } from 'vitest/config';
+
+    export default defineConfig({
+      test: {
+        // son una serie de elementos que están definidos por defecto
+        globals: true,
+      },
+    });
+   ```
+
+4. Creamos un nuevo fichero en la carpeta del fichero que _queremos_ **testear** con la siguiente nomenclatura: `ficheroTSaEvaluar.test.ts`. En nuestro caso, probaremos con el archivo [services.test.ts](../demo-pro/src/services.test.ts "Testing Services")
+
+> npm run tsc -- -h, el "--" hace que todo lo que este a la derecha de esta, sea un comando del script seleccionado, que en este caso será _tsc_
