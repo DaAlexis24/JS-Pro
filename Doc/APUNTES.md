@@ -85,7 +85,7 @@ Hemos creado un proyecto nuevo, llamado [front](/front/about.html), donde realiz
 
 En este proyecto, tenemos 2 ficheros HTML, y vemos que al utilizar el comando `npm run build` solo nos compila un proyecto.
 
-Para corregir esto debemos de configurar el comando `build` para crear **multi pages**, para ello tenemos que dirigirnos al fichero `vite.config.ts` y pegar lo siguiente:
+Para corregir esto debemos de configurar el comando `b  ild` para crear **multi pages**, para ello tenemos que dirigirnos al fichero `vite.config.ts` y pegar lo siguiente:
 
 ```TS
 import resolve from 'path' //importante
@@ -105,3 +105,40 @@ Ahora, también podemos crear carpetas en la raíz del proyecto con el nombre de
 > [!IMPORTANT]
 >
 > Recuerda que en _src_ solo debemos de tener los archivos de tipo TS, CSS, SVG que utilizaremos para dotar de dinamismo y estilos al proyecto.
+
+## Martes 28/01/2025
+
+### Programación Orientada a objetos en TS
+
+#### Objetos
+
+Se utiliza la palabra reservada **new** a la hora de generar una nueva instancia de una clase, convirtiéndose esta en un **objeto**
+
+#### Llamada a objetos
+
+Son funciones dentro de las clases que tienen acceso a los datos. Lo normal es que no requieran utilizar un parámetro ya que es el constructor el que recibe los datos que construyen tu objeto, ahora, si tenemos un dato que se va a utilizar en varios métodos o generar arrays, ahí si se necesita que el método guarde esos parámetros.
+
+#### Persistencia
+
+Tenemos que recurrir a la _serialization_ y _deserialization_ para poder guardar estos datos en un archivo JSON (parse y stringify)
+
+#### Evita las fugas de memoria
+
+A la hora de recolectar la basura en el código (es decir, dejar objetos sin sus referencias) pueden producirse _memory leaks_, para evitar esto debemos de convertir esos objetos en _null_
+
+#### Herencia múltiple
+
+Esto se realiza con la segregación de las interfaces, cada una puede tener una función específica y esta se heredará según la clase que se requiera.
+
+#### Tipos de herencia
+
+- Herencia simple
+- Herencia múltiple
+- Herencia jerárquica
+- Herencia multinivel
+
+#### Genericidad (Generics)
+
+##### Sobrecarga
+
+Es un concepto

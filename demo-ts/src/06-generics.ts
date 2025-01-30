@@ -74,3 +74,16 @@
     console.log(numberBox.getContent());
     console.log(stringBox.getContent());
 }
+{
+    interface Repository<T> {
+        read: () => T[];
+        readById: (id: string) => T;
+        create: (data: Partial<T>) => T;
+        update: (id: string, data: Partial<T>) => T;
+        delete: (id: string) => T;
+    }
+
+    type Note = {
+        id: string;
+    };
+}
